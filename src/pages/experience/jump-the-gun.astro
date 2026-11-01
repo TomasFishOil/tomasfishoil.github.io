@@ -1,0 +1,71 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectHeader from "../../components/experience/ProjectHeader.astro";
+import ProjectBody from "../../components/experience/ProjectBody.astro";
+import ProjectMeta from "../../components/experience/ProjectMeta.astro";
+import MetaItem from "../../components/experience/MetaItem.astro";
+import ProjectProse from "../../components/experience/ProjectProse.astro";
+import ProjectBanner from "../../components/experience/ProjectBanner.astro";
+import ProjectLinks from "../../components/experience/ProjectLinks.astro";
+import ProjectLink from "../../components/experience/ProjectLink.astro";
+import FakeGif from "../../components/FakeGif.astro";
+import Shot from "../../components/experience/Shot.astro";
+import type { Metadata } from "../../types";
+
+import banner from "../../assets/img/experience/jump-the-gun/banner.webp";
+import gameplayWeapon from "../../assets/img/experience/jump-the-gun/weapon.mp4";
+import gameplayAi from "../../assets/img/experience/jump-the-gun/ai.mp4";
+
+const meta: Metadata = {
+  title: "Jump the Gun",
+  description:
+    "Jump The Gun is a first person boomer shooter where you play as a father battling through his former mob boss's organization to get his kidnapped daughter back.",
+};
+---
+
+<Layout {meta}>
+  <div class="page-wrap">
+    <ProjectHeader title="Jump the Gun" />
+    <div class="mt-8 border-2 border-ink">
+      <ProjectBanner src={banner} loading="eager" />
+    </div>
+
+    <ProjectBody>
+      <ProjectMeta slot="meta">
+        <MetaItem label="Role">Gameplay Programmer</MetaItem>
+        <MetaItem label="Dates">January 2026 – Current</MetaItem>
+        <MetaItem label="Technologies">Unity 3D &amp; C#</MetaItem>
+        <MetaItem label="Team size">10 team members</MetaItem>
+        <ProjectLinks slot="links">
+          <ProjectLink href="https://github.com/SRS-Jump-the-Gun/JumpTheGunUnityBuild" icon="simple-icons:github">
+            GitHub
+          </ProjectLink>
+        </ProjectLinks>
+      </ProjectMeta>
+
+      <ProjectProse>
+        <h2>Gameplay</h2>
+
+        <p class="lead">
+          Jump The Gun is a first person boomer shooter where you play as a father battling through his former mob
+          boss's organization to get his kidnapped daughter back.
+        </p>
+
+        <Shot caption={"Early technical tests for a boss fight"}>
+          <FakeGif src={gameplayWeapon} />
+        </Shot>
+
+        <Shot caption={"Testing hit detection"}>
+          <FakeGif src={gameplayAi} />
+        </Shot>
+
+        <h2>My role</h2>
+        <p>
+          As a Gameplay Programmer, I created the game's <b>weapon system</b> that supports weapon swapping, weapon hit
+          detection, and modular creation of new weapons. I also created the game's inventory system and basic{" "}
+          <b>enemy AI</b> for targeting and pathing to the player when within a certain range.
+        </p>
+      </ProjectProse>
+    </ProjectBody>
+  </div>
+</Layout>

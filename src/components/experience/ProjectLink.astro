@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  href: string;
+  icon?: string;
+  primary?: boolean;
+}
+
+const { href, icon } = Astro.props;
+const external = /^https?:/.test(href);
+---
+
+<a
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+  class="w-full inline-flex items-center gap-2 basis-full justify-between bg-ink px-3 py-3 text-base text-paper-light hover:bg-pine"
+>
+  <span class="inline-flex min-w-0 items-center gap-2">
+    {icon && <Icon name={icon} class="shrink-0 size-6" />}
+    <span>
+      <slot />
+    </span>
+  </span>
+  <Icon name="lucide:arrow-up-right" class="size-5 shrink-0" />
+</a>

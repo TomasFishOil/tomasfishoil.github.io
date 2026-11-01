@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon/components";
+import type { ImageMetadata } from "astro";
+import { url } from "../../data/site";
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  banner?: ImageMetadata;
+  bannerAlt?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<header>
+  <a
+    href={url("/experience/")}
+    class="inline-flex items-center gap-2 underline-offset-4 hover:text-pine hover:underline"
+  >
+    <Icon name="lucide:arrow-left" class="size-5" />
+    all experience
+  </a>
+
+  <h1 class="page-title mt-6 text-[clamp(2.25rem,9vw,4rem)] text-balance">{title}</h1>
+  {subtitle && <p class="mt-3 text-center text-lg">{subtitle}</p>}
+</header>

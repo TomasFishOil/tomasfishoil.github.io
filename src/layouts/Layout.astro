@@ -1,0 +1,69 @@
+---
+import "../styles/global.css";
+import { Font } from "astro:assets";
+import type { Metadata } from "../types";
+import { siteName, siteTitle, siteTagline, url, defaultThemeColor } from "../data/site";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  meta: Metadata;
+}
+
+const { meta } = Astro.props;
+const title = meta.title ? `${meta.title} | ${siteTitle}` : `${siteTitle} | ${siteTagline}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const image = meta.image ? new URL(url(meta.image), Astro.site) : undefined;
+const imageAlt = meta.imageAlt ?? title;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Font cssVariable="--font-papercut" preload />
+    <Font cssVariable="--font-spooky" preload />
+
+    <title>{title}</title>
+    <meta name="description" content={meta.description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href={url("/sitemap-index.xml")} />
+    <link rel="icon" type="image/svg+xml" href={url("/favicon.svg")} />
+
+    <meta name="theme-color" content={defaultThemeColor} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={meta.description} />
+    {image && (
+      <>
+        <meta property="og:image" content={image} />
+        <meta property="og:image:alt" content={imageAlt} />
+        <meta name="twitter:image:alt" content={imageAlt} />
+      </>
+    )}
+
+    <meta name="twitter:card" content={image ? "summary_large_image" : "summary"} />
+  </head>
+
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-ink focus:px-3 focus:py-2 focus:text-paper-light"
+    >
+      Skip to content
+    </a>
+
+    <div class="flex min-h-dvh flex-col">
+      <Header />
+      <main id="main" class="flex-1 pt-10 pb-12 md:pt-12">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

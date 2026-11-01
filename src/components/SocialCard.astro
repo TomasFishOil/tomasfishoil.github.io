@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Social } from "../types";
+
+type Props = Social;
+
+const { href, name, handle, icon } = Astro.props;
+const external = href.startsWith("http");
+---
+
+<a
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+  class="flex items-center gap-4 border-2 border-ink bg-paper-light/60 p-4 shadow-[4px_4px_0_var(--color-ink)] transition hover:translate-x-1 hover:translate-y-1 hover:bg-ink hover:text-paper-light hover:shadow-none motion-reduce:transition-none"
+>
+  <Icon name={icon} class="size-8 shrink-0" />
+  <div class="min-w-0">
+    <h2 class="text-lg leading-tight">{name}</h2>
+    <p class="text-sm wrap-break-word">{handle}</p>
+  </div>
+</a>

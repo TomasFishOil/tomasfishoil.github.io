@@ -1,0 +1,66 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectHeader from "../../components/experience/ProjectHeader.astro";
+import ProjectBody from "../../components/experience/ProjectBody.astro";
+import ProjectMeta from "../../components/experience/ProjectMeta.astro";
+import MetaItem from "../../components/experience/MetaItem.astro";
+import ProjectProse from "../../components/experience/ProjectProse.astro";
+import Shot from "../../components/experience/Shot.astro";
+import ShotRow from "../../components/experience/ShotRow.astro";
+import ProjectBanner from "../../components/experience/ProjectBanner.astro";
+import FakeGif from "../../components/FakeGif.astro";
+import type { Metadata } from "../../types";
+
+import mrBladder from "../../assets/img/experience/mr-bladder/banner.webp";
+import gameplayTumbleVideo from "../../assets/img/experience/mr-bladder/tumble.webm";
+import gameplaySpillVideo from "../../assets/img/experience/mr-bladder/spill.webm";
+
+const meta: Metadata = {
+  title: "Mr. Bladder Has to Go",
+  description:
+    "Gameplay engineering on Mr. Bladder Has to Go, a whimsical balancing game set in an organ-themed world.",
+};
+---
+
+<Layout {meta}>
+  <div class="page-wrap">
+    <ProjectHeader title="Mr. Bladder Has to Go" subtitle="USC AGP" />
+    <div class="mt-8 border-2 border-ink">
+      <ProjectBanner src={mrBladder} loading="eager" />
+    </div>
+
+    <ProjectBody>
+      <ProjectMeta slot="meta">
+        <MetaItem label="Role">Gameplay Engineer</MetaItem>
+        <MetaItem label="Dates">August 2026 – Current</MetaItem>
+        <MetaItem label="Technologies">Unreal Engine Blueprint &amp; C++</MetaItem>
+        <MetaItem label="Team size">50 team members</MetaItem>
+      </ProjectMeta>
+
+      <ProjectProse>
+        <h2>Gameplay</h2>
+
+        <p class="lead">
+          Mr. Bladder Has to Go is a whimsical balancing game where you play as Mr Bladder, a container-shaped guy in an
+          organ-themed world, who is trying hard not to spill his pee in public.
+        </p>
+
+        <ShotRow>
+          <Shot>
+            <FakeGif src={gameplaySpillVideo} />
+          </Shot>
+          <Shot>
+            <FakeGif src={gameplayTumbleVideo} />
+          </Shot>
+        </ShotRow>
+
+        <h2>My role</h2>
+        <p>
+          As a Gameplay Engineer, I take on weekly tasks typically related to our <b>character controller</b> and{" "}
+          <b>game systems</b>. I aim to create well optimized gameplay features that highlight the game’s goofy nature.
+          Recently, I worked on a reusable <b>“Liquid Container”</b> that scales fill times based on the total volume.
+        </p>
+      </ProjectProse>
+    </ProjectBody>
+  </div>
+</Layout>

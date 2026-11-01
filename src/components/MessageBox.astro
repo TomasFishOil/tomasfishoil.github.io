@@ -1,0 +1,35 @@
+<div class="message-box">
+  <slot />
+</div>
+
+<style>
+  .message-box {
+    /* scale applied to the frame; text padding follows it */
+    --s: 0.65;
+    box-sizing: border-box;
+    min-height: calc(235px * var(--s));
+    border: 0 solid transparent;
+    border-image-source: url("../assets/img/message.avif");
+    border-image-slice: 20 50 215 45;
+    border-image-width: calc(20px * var(--s)) calc(50px * var(--s)) calc(215px * var(--s)) calc(45px * var(--s));
+    border-image-repeat: stretch;
+    padding: calc(14px * var(--s) + 1rem) calc(50px * var(--s) + 1.1rem) calc(30px * var(--s) + 1rem)
+      calc(45px * var(--s) + 1.1rem);
+    font-size: 1rem;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  .message-box :global(p + p) {
+    margin-top: 0.75em;
+  }
+
+  @media (min-width: 40rem) {
+    .message-box {
+      --s: 0.8;
+      font-size: 1.0625rem;
+      text-align: justify;
+      hyphens: auto;
+    }
+  }
+</style>

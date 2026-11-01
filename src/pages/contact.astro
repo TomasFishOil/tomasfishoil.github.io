@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MessageRow from "../components/MessageRow.astro";
+import SocialCard from "../components/SocialCard.astro";
+import { socials } from "../data/site";
+import type { Metadata } from "../types";
+
+const meta: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Tomás Palmieri",
+};
+---
+
+<Layout {meta}>
+  <div class="page-wrap">
+    <h1 class="page-title">contact</h1>
+
+    <div class="mt-8 md:mt-12">
+      <MessageRow contained>
+        <p>Please see below for ways to contact Tomas. Thank you for taking time to visit us.</p>
+      </MessageRow>
+    </div>
+
+    <ul class="mx-auto mt-10 grid max-w-md gap-5">
+      {socials.map((social) => (
+        <li>
+          <SocialCard {...social} />
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>

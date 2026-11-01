@@ -1,0 +1,55 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ExperienceSection from "../../components/experience/ExperienceSection.astro";
+import ProjectCard from "../../components/experience/ProjectCard.astro";
+import { url } from "../../data/site";
+import type { Metadata } from "../../types";
+
+import einVaen from "../../assets/img/experience/ein-vaen.webp";
+import mrBladder from "../../assets/img/experience/mr-bladder-has-to-go.webp";
+import jumpTheGun from "../../assets/img/experience/jump-the-gun.webp";
+import largeLanguageMimic from "../../assets/img/experience/large-language-mimic.webp";
+import moveMoveMelon from "../../assets/img/experience/move-move-melon.webp";
+import neuromancer from "../../assets/img/experience/neuromancer.webp";
+import lanternLight from "../../assets/img/experience/lantern-light.webp";
+import aPortalOpened from "../../assets/img/experience/a-portal-opened-in-my-shop.webp";
+
+const meta: Metadata = {
+  title: "Experience",
+  description:
+    "Game development projects by Tomás Palmieri, from personal projects to work with USC AGP and UCLA ACM Studio.",
+};
+---
+
+<Layout {meta}>
+  <div class="page-wrap">
+    <h1 class="page-title">experience</h1>
+
+    <div class="mt-10 md:mt-14">
+      <ExperienceSection title="Active Development">
+        <ProjectCard href={url("/experience/mr-bladder-has-to-go/")} title="Mr. Bladder Has to Go" banner={mrBladder} />
+        <ProjectCard href={url("/experience/ein-vaen/")} title="ein vaen" banner={einVaen} />
+        <ProjectCard href={url("/experience/jump-the-gun/")} title="Jump the Gun" banner={jumpTheGun} />
+      </ExperienceSection>
+
+      <ExperienceSection title="Completed">
+        <ProjectCard
+          href={url("/experience/large-language-mimic/")}
+          title="Large Language Mimic"
+          banner={largeLanguageMimic}
+        />
+        <ProjectCard href={url("/experience/move-move-melon/")} title="Move Move Melon!!" banner={moveMoveMelon} />
+        <ProjectCard href={url("/experience/neuromancer/")} title="Neuromancer" banner={neuromancer} />
+      </ExperienceSection>
+
+      <ExperienceSection title="Game Jams">
+        <ProjectCard href={url("/experience/lantern-light/")} title="Lantern Light" banner={lanternLight} />
+        <ProjectCard
+          href={url("/experience/a-portal-opened-in-my-shop/")}
+          title="A Portal Opened in My Shop..."
+          banner={aPortalOpened}
+        />
+      </ExperienceSection>
+    </div>
+  </div>
+</Layout>

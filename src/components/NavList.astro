@@ -1,0 +1,19 @@
+---
+import { links, isCurrent } from "../data/site";
+
+const path = Astro.url.pathname;
+---
+
+<ul class="flex flex-col gap-3">
+  {links.map(({ label, href }) => (
+    <li>
+      <a
+        href={href}
+        aria-current={isCurrent(path, href) ? "page" : undefined}
+        class="block border-2 border-ink px-4 py-3 text-center text-lg hover:bg-ink hover:text-paper-light aria-[current=page]:border-pine aria-[current=page]:bg-pine aria-[current=page]:text-paper-light"
+      >
+        {label}
+      </a>
+    </li>
+  ))}
+</ul>

@@ -1,0 +1,37 @@
+---
+import MobileMenu from "./MobileMenu.astro";
+import { siteName, links, url, isCurrent } from "../data/site";
+
+const path = Astro.url.pathname;
+const topLinks = links.filter((l) => l.path !== "/");
+---
+
+<header class="sticky top-0 pt-4 z-40 bg-paper">
+  <div class="mx-auto flex h-14 max-w-6xl items-baseline justify-between gap-4 px-4 md:px-8 lg:px-12">
+    <a
+      href={url("/")}
+      aria-current={isCurrent(path, url("/")) ? "page" : undefined}
+      class="font-paper text-[1.7rem] leading-none sm:text-4xl"
+    >
+      {siteName}
+    </a>
+
+    <nav aria-label="Primary" class="hidden md:block">
+      <ul class="flex gap-8">
+        {topLinks.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              aria-current={isCurrent(path, href) ? "page" : undefined}
+              class="py-2 underline-offset-4 hover:text-pine hover:underline aria-[current=page]:text-pine aria-[current=page]:underline"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <MobileMenu />
+  </div>
+</header>

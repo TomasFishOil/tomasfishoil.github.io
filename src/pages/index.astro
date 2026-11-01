@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MessageRow from "../components/MessageRow.astro";
+import type { Metadata } from "../types";
+
+const meta: Metadata = {
+  title: "Home",
+  description:
+    "Portfolio of Tomás Palmieri, a Computer Science and Game Development student at USC building gameplay systems in Unreal Engine and Unity.",
+};
+---
+
+<Layout {meta}>
+  <div class="page-wrap">
+    <h1 class="page-title page-title-hero select-none">
+      welcome to
+      <br />
+      my website
+    </h1>
+  </div>
+
+  <div class="mt-10 md:mt-14">
+    <MessageRow>
+      <p>
+        Explore Tomás&apos; previous and current projects or learn more about him via the tabs above. We thank you for
+        taking the time to visit us and Tomás&apos; portfolio.
+      </p>
+    </MessageRow>
+  </div>
+</Layout>

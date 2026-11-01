@@ -1,0 +1,16 @@
+---
+import { Image } from "astro:assets";
+import banner from "../assets/banner.webp";
+---
+
+<div class="aspect-10/3 overflow-hidden border-4 rounded-lg border-wine bg-white">
+  <Image
+    src={banner}
+    alt="Site banner"
+    priority
+    layout="constrained"
+    width={1050}
+    height={315}
+    class="size-full object-cover"
+  />
+</div>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+}
+
+const { src, alt } = Astro.props;
+---
+
+<video
+  src={src}
+  autoplay
+  loop
+  muted
+  playsinline
+  disablepictureinpicture
+  disableRemotePlayback
+  tabindex="-1"
+  role={alt ? "img" : undefined}
+  aria-label={alt}
+  aria-hidden={alt ? undefined : "true"}
+  class="pointer-events-none block h-auto w-full select-none"
+></video>

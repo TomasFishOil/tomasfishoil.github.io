@@ -1,0 +1,14 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section class="mt-14 first:mt-0">
+  <h2 class="text-center font-sans text-[clamp(1rem,8vw,2rem)] leading-tight">{title}</h2>
+  <ul class="mt-6 flex flex-wrap justify-center gap-6">
+    <slot />
+  </ul>
+</section>

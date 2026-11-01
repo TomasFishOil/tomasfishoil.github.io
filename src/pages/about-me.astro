@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FramedPhoto from "../components/FramedPhoto.astro";
+import type { Metadata } from "../types";
+
+const meta: Metadata = {
+  title: "About Me",
+  description:
+    "Tomás Palmieri is a Computer Science and Game Development student at USC and Co-President of Open Alpha, USC’s Game Development club.",
+};
+---
+
+<Layout {meta}>
+  <div class="page-wrap">
+    <h1 class="page-title">about me</h1>
+
+    <div class="mx-auto mt-8 grid max-w-3xl items-start gap-8 md:mt-12 md:grid-cols-[minmax(0,1fr)_auto] md:gap-12">
+      <div class="space-y-5 leading-snug md:text-[1.0625rem]">
+        <p>
+          I am a Computer Science and Game Development student at USC who utilizes Unreal Engine and Unity to create
+          engaging mechanics and gameplay systems.
+        </p>
+        <p>
+          I am currently working on my personal project ein-vaen, Mr. Bladder Has to Go (USC AGP), and Jump the Gun
+          (UCLA ACM Studio). I am also the Co-President of USC’s Game Development club, Open Alpha.
+        </p>
+        <p>Outside of video games, I enjoy playing MTG, TTRPGS, backpacking, and surfing.</p>
+      </div>
+
+      <!-- photo first on small screens, right-hand column from md up -->
+      <div class="order-first mx-auto w-full max-w-70 md:order-0 md:mx-0">
+        <FramedPhoto alt="Tomás smiling in front of flowers" />
+      </div>
+    </div>
+  </div>
+</Layout>

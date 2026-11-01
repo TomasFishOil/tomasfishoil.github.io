@@ -1,0 +1,36 @@
+---
+interface Props {
+  caption?: string;
+}
+
+const { caption } = Astro.props;
+---
+
+<figure class="not-prose my-8 flex flex-col border-2 border-ink bg-paper-light/60">
+  <div class="shot__media">
+    <slot />
+  </div>
+  {caption && <figcaption class="border-t-2 border-ink px-3 py-2 text-sm">{caption}</figcaption>}
+</figure>
+
+<style>
+  .shot__media {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    line-height: 0;
+    background: var(--color-ink);
+  }
+  .shot__media > :global(*) {
+    flex: 1 1 auto;
+  }
+  .shot__media > :global(img),
+  .shot__media > :global(video),
+  .shot__media > :global(iframe) {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: cover;
+  }
+</style>

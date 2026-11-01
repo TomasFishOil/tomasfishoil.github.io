@@ -1,0 +1,14 @@
+---
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div class="px-4 py-3">
+  <dt class="text-sm">{label}</dt>
+  <dd class="text-lg leading-snug">
+    <slot />
+  </dd>
+</div>

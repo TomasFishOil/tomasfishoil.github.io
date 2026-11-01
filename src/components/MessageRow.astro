@@ -1,0 +1,133 @@
+---
+import fish from "../assets/img/fish.avif";
+import MessageBox from "./MessageBox.astro";
+
+interface Props {
+  /** Keep both fish fully inside the page column (no cropping). */
+  contained?: boolean;
+}
+
+const { contained = false } = Astro.props;
+---
+
+<div class:list={["message-row", { "message-row--contained": contained }]}>
+  <img
+    class="fish fish--left"
+    src={fish.src}
+    width={fish.width}
+    height={fish.height}
+    alt=""
+    aria-hidden="true"
+    decoding="async"
+  />
+
+  <div class="message-row__box">
+    <MessageBox>
+      <slot />
+    </MessageBox>
+  </div>
+
+  <img
+    class="fish fish--right"
+    src={fish.src}
+    width={fish.width}
+    height={fish.height}
+    alt=""
+    aria-hidden="true"
+    decoding="async"
+  />
+</div>
+
+<style>
+  .message-row {
+    --fish: min(60vw, 18rem);
+    --fish-gap: 0rem; /* space between a fish and the box (row layout only) */
+    display: grid;
+    /* minmax(0, …) so the oversized fish can't stretch the columns */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "box box"
+      "left right";
+    row-gap: 1rem;
+    /* crop the fish at the viewport edge instead of causing horizontal scroll */
+    overflow-x: clip;
+  }
+
+  .message-row__box {
+    grid-area: box;
+    width: min(100% - 2rem, 29rem);
+    margin-inline: auto;
+  }
+
+  .fish {
+    width: var(--fish);
+    height: auto;
+    max-width: none;
+    user-select: none;
+  }
+  /* item wider than its column → overflows toward the outside edge */
+  .fish--left {
+    grid-area: left;
+    justify-self: end;
+  }
+  .fish--right {
+    grid-area: right;
+    justify-self: start;
+    transform: scaleX(-1);
+  }
+
+  @media (min-width: 56rem) {
+    .message-row:not(.message-row--contained) {
+      --fish: clamp(11rem, 30vw, 20rem);
+      --fish-gap: 1.5rem;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 29rem) minmax(0, 1fr);
+      grid-template-areas: "left box right";
+      align-items: center;
+      row-gap: 0;
+    }
+    .message-row:not(.message-row--contained) .message-row__box {
+      width: 100%;
+    }
+  }
+
+  /* ---- contained: never crop the fish ---- */
+  .message-row--contained {
+    overflow-x: visible;
+  }
+  .message-row--contained .fish {
+    /* never wider than its column (minus the gap to the box) */
+    width: min(var(--fish), 100% - var(--fish-gap));
+  }
+
+  @media (min-width: 64rem) {
+    .message-row--contained {
+      --fish: 20rem;
+      --fish-gap: 1.5rem;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 29rem) minmax(0, 1fr);
+      grid-template-areas: "left box right";
+      align-items: center;
+      row-gap: 0;
+    }
+    .message-row--contained .message-row__box {
+      width: 100%;
+    }
+  }
+
+  /* gap between fish and box (both modes, row layout) */
+  @media (min-width: 56rem) {
+    .message-row:not(.message-row--contained) .fish--left {
+      margin-right: var(--fish-gap);
+    }
+    .message-row:not(.message-row--contained) .fish--right {
+      margin-left: var(--fish-gap);
+    }
+  }
+  @media (min-width: 64rem) {
+    .message-row--contained .fish--left {
+      margin-right: var(--fish-gap);
+    }
+    .message-row--contained .fish--right {
+      margin-left: var(--fish-gap);
+    }
+  }
+</style>

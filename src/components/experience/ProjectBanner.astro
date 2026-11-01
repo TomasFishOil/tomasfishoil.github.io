@@ -10,12 +10,22 @@ interface Props {
   loading?: "lazy" | "eager";
 }
 
-const { src, alt = "", loading = "lazy" } = Astro.props;
+const { src, alt = "", ratio = 2, width = 640, loading = "lazy" } = Astro.props;
+const height = Math.round(width / ratio);
 ---
 
-<div class="banner">
+<div class="banner" style={`aspect-ratio: ${ratio}`}>
   {src ? (
-    <Image class="banner__img" src={src} alt={alt} densities={[1, 2]} fit="cover" loading={loading} />
+    <Image
+      class="banner__img"
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      densities={[1, 2]}
+      fit="cover"
+      loading={loading}
+    />
   ) : (
     <div
       class="banner__placeholder"

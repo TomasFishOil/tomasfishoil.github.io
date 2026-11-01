@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import ProjectHeader from "../../components/experience/ProjectHeader.astro";
 import ProjectBody from "../../components/experience/ProjectBody.astro";
@@ -11,7 +12,7 @@ import ProjectBanner from "../../components/experience/ProjectBanner.astro";
 import FakeGif from "../../components/FakeGif.astro";
 import type { Metadata } from "../../types";
 
-import mrBladder from "../../assets/img/experience/mr-bladder/banner.webp";
+import banner from "../../assets/img/experience/mr-bladder/banner.webp";
 import gameplayTumbleVideo from "../../assets/img/experience/mr-bladder/tumble.webm";
 import gameplaySpillVideo from "../../assets/img/experience/mr-bladder/spill.webm";
 
@@ -26,7 +27,7 @@ const meta: Metadata = {
   <div class="page-wrap">
     <ProjectHeader title="Mr. Bladder Has to Go" subtitle="USC AGP" />
     <div class="mt-8 border-2 border-ink">
-      <ProjectBanner src={mrBladder} loading="eager" />
+      <Image alt={"Mr. Bladder Has to Go logo"} src={banner} loading="eager" />
     </div>
 
     <ProjectBody>

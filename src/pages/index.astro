@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import MessageRow from "../components/MessageRow.astro";
+import { url } from "../data/site";
 import type { Metadata } from "../types";
 
 const meta: Metadata = {
@@ -26,5 +27,15 @@ const meta: Metadata = {
         taking the time to visit us and Tomás&apos; portfolio.
       </p>
     </MessageRow>
+  </div>
+  <div class="mt-5 flex items-center justify-center">
+    <a
+      href={url("/experience/")}
+      class="inline-flex items-center gap-2 justify-between bg-ink px-3 py-3 text-base text-paper-light hover:bg-pine"
+    >
+      <span class="inline-flex min-w-0 items-center gap-2">
+        <span>View Projects</span>
+      </span>
+    </a>
   </div>
 </Layout>

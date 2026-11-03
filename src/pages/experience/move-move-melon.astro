@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import ProjectHeader from "../../components/experience/ProjectHeader.astro";
+import ProjectBody from "../../components/experience/ProjectBody.astro";
+import ProjectMeta from "../../components/experience/ProjectMeta.astro";
+import MetaItem from "../../components/experience/MetaItem.astro";
+import ProjectProse from "../../components/experience/ProjectProse.astro";
+import ProjectLinks from "../../components/experience/ProjectLinks.astro";
+import ProjectLink from "../../components/experience/ProjectLink.astro";
+import Shot from "../../components/experience/Shot.astro";
+
+import type { Metadata } from "../../types";
+
+import banner from "../../assets/img/experience/move-move-melon/banner.webp";
+import gameplayOne from "../../assets/img/experience/move-move-melon/gameplay1.webp";
+import gameplayTwo from "../../assets/img/experience/move-move-melon/gameplay2.webp";
+
+const meta: Metadata = {
+  title: "Move Move Melon!!",
+  description:
+    "Move Move Melon!! is an on-rails runner game where you play as Melon, a tiny hamster with the huge goal of creating the biggest ice cream scoop with her mixer ball.",
+};
+---
+
+<Layout {meta}>
+  <div class="page-wrap">
+    <ProjectHeader title="Move Move Melon!!" />
+    <div class="mt-8 border-2 border-ink">
+      <Image alt={"Move Move Melon!! logo"} src={banner} loading="eager" class="w-full" />
+    </div>
+
+    <ProjectBody>
+      <ProjectMeta slot="meta">
+        <MetaItem label="Role">QA Tester</MetaItem>
+        <MetaItem label="Dates">Nov. 2025 – June 2026</MetaItem>
+        <MetaItem label="Technologies">Unity &amp; Notion</MetaItem>
+        <MetaItem label="Team size">50+ team members</MetaItem>
+        <ProjectLinks slot="links">
+          <ProjectLink href="https://store.steampowered.com/app/4379220/Move_Move_Melon/" icon="simple-icons:steam">
+            Play on Steam
+          </ProjectLink>
+        </ProjectLinks>
+      </ProjectMeta>
+
+      <ProjectProse>
+        <h2>Gameplay</h2>
+
+        <p class="lead">
+          Move Move Melon!! is an on-rails runner game where you play as Melon, a tiny hamster with the huge goal of
+          creating the biggest ice cream scoop with her mixer ball.
+        </p>
+
+        <Shot>
+          <Image alt={"Gameplay of Move Move Melon!!"} src={gameplayOne} />
+        </Shot>
+        <Shot>
+          <Image alt={"Gameplay of Move Move Melon!!"} src={gameplayTwo} />
+        </Shot>
+
+        <h2>My role</h2>
+        <p>
+          As a QA Tester, I discovered and documented 10+ gameplay bugs per week with Perforce, Unity, and Notion. For
+          each bug, I provided the engineering team with a step-by-step reproduction guide and video demonstrating the
+          improper behavior.
+        </p>
+      </ProjectProse>
+    </ProjectBody>
+  </div>
+</Layout>

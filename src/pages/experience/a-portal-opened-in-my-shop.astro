@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectHeader from "../../components/experience/ProjectHeader.astro";
+import ProjectBody from "../../components/experience/ProjectBody.astro";
+import ProjectMeta from "../../components/experience/ProjectMeta.astro";
+import MetaItem from "../../components/experience/MetaItem.astro";
+import ProjectProse from "../../components/experience/ProjectProse.astro";
+import ProjectLinks from "../../components/experience/ProjectLinks.astro";
+import ProjectLink from "../../components/experience/ProjectLink.astro";
+
+import type { Metadata } from "../../types";
+
+const meta: Metadata = {
+  title: "A Portal Opened in My Shop...",
+  description: "WIP",
+};
+---
+
+<Layout {meta}>
+  <div class="page-wrap">
+    <ProjectHeader title="A Portal Opened In My Shop And I Accidentally Took Over The World" />
+
+    <ProjectBody>
+      <ProjectMeta slot="meta">
+        <MetaItem label="Game Jam Length">2 days</MetaItem>
+        <MetaItem label="Dates">December 2025</MetaItem>
+        <MetaItem label="Technologies">Unity &amp; C#, Aseprite</MetaItem>
+        <MetaItem label="Team size">3 team members</MetaItem>
+        <ProjectLinks slot="links">
+          <ProjectLink
+            href="https://tomasii.itch.io/a-portal-opened-in-my-shop-and-i-accidentally-took-over-the-world"
+            icon="simple-icons:itchdotio"
+          >
+            Play on itch.io
+          </ProjectLink>
+          <ProjectLink href="https://github.com/RyFranco/MaskGameJam" icon="simple-icons:github">
+            View source code
+          </ProjectLink>
+        </ProjectLinks>
+      </ProjectMeta>
+
+      <ProjectProse>
+        <h2>Gameplay</h2>
+
+        <p class="lead">Page is WIP. See links on the right!</p>
+      </ProjectProse>
+    </ProjectBody>
+  </div>
+</Layout>
